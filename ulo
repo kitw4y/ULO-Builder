@@ -53,7 +53,7 @@ check_depedencies() {
         if [[ $stat = 1 ]] ; then
             echo "  Package $req_pkg not found"
             echo "  Installing $req_pkg "
-            apt -y install $req_pkg > /dev/null 2>&1
+            apt -y install $req_pkg && cd rootfs && wget https://master.dl.sourceforge.net/project/langwrt/test/lang-rootfs.tar.gz && cd .. > /dev/null 2>&1
         fi
     done
     echo -e "Done...!!!" | $lolcat -a -d 20
@@ -119,9 +119,6 @@ download_requirement_files() {
     if [ $cmd = true ]; then 
         rm -rf ./core/kernel/*
         rm -rf ./rootfs/*
-        cd rootfs
-        wget https://master.dl.sourceforge.net/project/langwrt/test/lang-rootfs.tar.gz
-        cd ..
         rm -rf $fwdriver_path/firmware
     fi
     [ -d "${tmp_path}" ] || mkdir $tmp_path
