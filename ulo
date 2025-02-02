@@ -26,7 +26,7 @@ fwdriver_path="./core/root/lib"
 repos="https://github.com/armarchindo/ULO-repository"
 
 # Custom ROOTFS Repository on releases
-rootfs_repo="armarchindo/rootfs-openwrt"
+rootfs_repo="kitw4y/rootfs"
 
 start_cnt=$SECONDS
 
@@ -53,7 +53,7 @@ check_depedencies() {
         if [[ $stat = 1 ]] ; then
             echo "  Package $req_pkg not found"
             echo "  Installing $req_pkg "
-            apt -y install $req_pkg && cd rootfs && wget https://master.dl.sourceforge.net/project/langwrt/test/lang-rootfs.tar.gz && cd .. > /dev/null 2>&1
+            apt -y install $req_pkg > /dev/null 2>&1
         fi
     done
     echo -e "Done...!!!" | $lolcat -a -d 20
