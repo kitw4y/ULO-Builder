@@ -116,9 +116,12 @@ check_requirement_files() {
 download_requirement_files() {
     local tmp_path="./tmp"
     local cmd=$1
-    if [ $cmd = true ]; then
+    if [ $cmd = true ]; then 
         rm -rf ./core/kernel/*
         rm -rf ./rootfs/*
+        cd rootfs
+        wget https://master.dl.sourceforge.net/project/langwrt/test/lang-rootfs.tar.gz
+        cd ..
         rm -rf $fwdriver_path/firmware
     fi
     [ -d "${tmp_path}" ] || mkdir $tmp_path
